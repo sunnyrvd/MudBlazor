@@ -1,0 +1,45 @@
+﻿@namespace MudBlazor
+@typeparam T
+@inherits MudBaseInput<Range<T>>
+@using MudBlazor.Internal
+
+<div class="@Classname" style="@Style">
+    @if (Adornment == Adornment.Start)
+    {
+        <MudInputAdornment Class="@AdornmentClassname" Icon="@AdornmentIcon" Color="@AdornmentColor" Size="@IconSize" Text="@AdornmentText" Edge="@Edge.Start" AdornmentClick="@OnAdornmentClick" AriaLabel="@AdornmentAriaLabel" />
+    }
+
+    @if (InputType == InputType.Hidden && ChildContent != null)
+    {
+        <div class="@InputClassname">
+            @ChildContent
+        </div>
+    }
+
+    <input @ref="_elementReferenceStart" @attributes="UserAttributes" type="@InputTypeString" class="@InputClassname" @bind-value="@TextStart" @bind-value:event="@((Immediate ? "oninput" : "onchange"))"
+           placeholder="@PlaceholderStart" disabled=@GetDisabledState() readonly="@GetReadOnlyState()" @onblur="@OnBlurredAsync" @onkeydown="@InvokeKeyDownAsync" @onkeypress="@InvokeKeyPress" @onkeyup="@InvokeKeyUpAsync" inputmode="@InputMode.ToString()" pattern="@Pattern" />
+    <MudIcon Class="mud-range-input-separator mud-flip-x-rtl" Icon="@SeparatorIcon" Color="@Color.Default" />
+    <input @ref="_elementReferenceEnd" @attributes="UserAttributes" type="@InputTypeString" class="@InputClassname" @bind-value="@TextEnd" @bind-value:event="@((Immediate ? "oninput" : "onchange"))" inputmode="@InputMode.ToString()" pattern="@Pattern"
+           placeholder="@PlaceholderEnd" disabled=@GetDisabledState() readonly="@GetReadOnlyState()" @onblur="@OnBlurredAsync" @onkeydown="@InvokeKeyDownAsync" @onkeypress="@InvokeKeyPress" @onkeyup="@InvokeKeyUpAsync" />
+
+    @if (IsClearable() && !GetDisabledState())
+    {
+        <MudIconButton Class="@(Adornment is Adornment.Start ? "me-0" : "me-n4")" Style="z-index: 2"
+                       Color="@Color.Default"
+                       Icon="@Icons.Material.Filled.Clear"
+                       Size="@Size.Small"
+                       OnClick="@ClearButtonClickHandlerAsync"
+                       aria-label="Clear"
+                       tabindex="-1" />
+    }
+
+    @if (Adornment == Adornment.End)
+    {
+        <MudInputAdornment Class="@AdornmentClassname" Icon="@AdornmentIcon" Color="@AdornmentColor" Size="@IconSize" Text="@AdornmentText" Edge="@Edge.End" AdornmentClick="@OnAdornmentClick" AriaLabel="@AdornmentAriaLabel" />
+    }
+
+    @if (Variant == Variant.Outlined)
+    {
+        <div class="mud-input-outlined-border"></div>
+    }
+</div>

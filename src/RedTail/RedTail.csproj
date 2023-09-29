@@ -24,4 +24,14 @@
       <DependentUpon>LanguageResource.resx</DependentUpon>
     </Compile>
   </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="Components\Field\MudField.razor" />
+    <AdditionalFiles Include="Components\Form\MudForm.razor" />
+    <AdditionalFiles Include="Components\InputControl\MudInputControl.razor" />
+    <AdditionalFiles Include="Components\Mask\MudMask.razor" />
+    <AdditionalFiles Include="Components\NumericField\MudNumericField.razor" />
+    <AdditionalFiles Include="Components\TextField\MudTextField.razor" />
+    <AdditionalFiles Include="Components\ThemeProvider\MudThemeProvider.razor" />
+  </ItemGroup>
 </Project>
