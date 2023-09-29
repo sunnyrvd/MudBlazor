@@ -5,23 +5,23 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
-
+  
   <ItemGroup>
-    <Folder Include="Components\" />
+    <ProjectReference Include="..\MudBlazor.SourceCodeGenerator\MudBlazor.SourceCodeGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
   </ItemGroup>
 
   <ItemGroup>
-    <AdditionalFiles Include="Layout\MainLayout.razor" />
-    <AdditionalFiles Include="Layout\NavMenu.razor" />
-    <AdditionalFiles Include="Pages\Counter.razor" />
-    <AdditionalFiles Include="Pages\Home.razor" />
-    <AdditionalFiles Include="Pages\Weather.razor" />
+    <EmbeddedResource Update="Resources\LanguageResource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>LanguageResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
-    <_ContentIncludedByDefault Remove="Components\Pages\Counter.razor" />
-    <_ContentIncludedByDefault Remove="Components\Pages\Home.razor" />
-    <_ContentIncludedByDefault Remove="Components\Pages\Weather.razor" />
+    <Compile Update="Resources\LanguageResource.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>LanguageResource.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
-
 </Project>
